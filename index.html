@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio | Nama Anda</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #E5E5E5;
+      color: #111111;
+      overflow-x: hidden;
+    }
+
+    /* NAVBAR */
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(158, 157, 157, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 0, 0, .08);
+
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 18px 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: #111111;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #111111;
+      text-decoration: none;
+    }
+
+
+    .nav-links a:hover {
+      color: #FF3B3B;
+    }
+
+
+    .menu-btn {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 120px 20px 80px;
+    }
+
+    .hero-content {
+      width: 100%;
+    }
+
+    .hero h1 {
+      color: #111111;
+    }
+
+
+    .hero p {
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .hero-image {
+      margin: 30px auto;
+    }
+
+    .hero-image img {
+      width: 100%;
+      max-width: 1200px;
+      height: auto;
+      display: block;
+      margin: auto;
+      border-radius: 12px;
+    }
+
+    @media(max-width:768px) {
+
+      .hero-wrapper {
+        flex-direction: column-reverse;
+        text-align: center;
+      }
+
+      .hero-image img {
+        width: 280px;
+      }
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 15px;
+    }
+
+    .hero h1 span {
+      color: #FF3B3B;
+    }
+
+    .hero p {
+      color: #666666;
+      line-height: 1.8;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      background: #FF3B3B;
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: .3s;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      background: #E22D2D;
+    }
+
+    .profile-photo img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid #666666;
+      margin: 25px 0;
+    }
+
+    /* ABOUT */
+
+    section {
+      padding: 100px 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+      font-size: 2.3rem;
+      color: #111111;
+    }
+
+    .section-title span {
+      color: #FF3B3B;
+    }
+
+    .about {
+      text-align: center;
+      color: #555555;
+      max-width: 800px;
+      margin: auto;
+      line-height: 1.8;
+    }
+
+    /* SKILLS */
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .skill-card {
+      background: #F8F8F8;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, .05);
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      transition: .3s;
+      border: 1px solid rgba(0, 0, 0, .05);
+    }
+
+    .skill-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .skill-card h3 {
+      color: #111111;
+      margin-bottom: 15px;
+    }
+
+    .skill-card p {
+      color: #666666;
+      font-size: .95rem;
+    }
+
+    .skill-icon {
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+
+    /* PORTFOLIO */
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+
+    .portfolio-item {
+      overflow: hidden;
+      border-radius: 18px;
+      background: #F8F8F8;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, .05);
+      transition: .4s;
+    }
+
+    .portfolio-item:hover {
+      transform: translateY(-8px);
+    }
+
+    .portfolio-item img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .portfolio-content {
+      padding: 20px;
+    }
+
+    .portfolio-content h3 {
+      margin-bottom: 10px;
+    }
+
+    .portfolio-content p {
+      color: #666666;
+      font-size: 0.95rem;
+    }
+
+    /* LIGHTBOX */
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: .3s;
+      z-index: 9999;
+    }
+
+    .lightbox.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90vh;
+      border-radius: 12px;
+      animation: zoomIn .3s ease;
+    }
+
+    @keyframes zoomIn {
+      from {
+        transform: scale(.8);
+        opacity: 0;
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .portfolio-item img {
+      cursor: pointer;
+    }
+
+    .portfolio-item img {
+      transition: .4s;
+    }
+
+    .portfolio-item:hover img {
+      transform: scale(1.05);
+    }
+
+    /* CONTACT */
+
+    .contact {
+      text-align: center;
+    }
+
+    .contact p {
+      color: #666666;
+      margin-bottom: 25px;
+    }
+
+    /* CONTACT */
+
+    .contact {
+      text-align: center;
+    }
+
+    .contact-list {
+      max-width: 500px;
+      margin: 40px auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: #F8F8F8;
+      padding: 20px 25px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, .05);
+      text-align: left;
+      transition: .3s;
+    }
+
+    .contact-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .contact-icon {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      width: auto;
+    }
+
+    .contact-text h3 {
+      color: #111;
+      margin-bottom: 5px;
+    }
+
+    .contact-text p {
+      color: #666;
+      margin: 0;
+      text-align: center;
+    }
+
+    /* FOOTER */
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      border-top: 1px solid rgba(0, 0, 0, .08);
+      color: #666666;
+    }
+
+    /* MOBILE */
+
+    @media(max-width:768px) {
+
+      .hero h1 {
+        font-size: 2.3rem;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 80px;
+        left: -100%;
+        width: 100%;
+        background: #0f172a;
+        flex-direction: column;
+        text-align: center;
+        padding: 25px 0;
+        transition: .4s;
+      }
+
+      .nav-links.active {
+        left: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav class="navbar">
+    <div class="nav-container">
+
+      <a href="#" class="logo">Naufal Prass.</a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">Tentang</a></li>
+        <li><a href="#skills">Skill</a></li>
+        <li><a href="#portfolio">Portofolio</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+      </ul>
+
+      <div class="menu-btn" id="menuBtn">
+        ☰
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero" id="home">
+
+    <div class="hero-content">
+
+      <h1>Naufal <span>Prass</span></h1>
+      <div class="profile-photo">
+        <img src="profil.jpeg" alt="Naufal Prass">
+      </div>
+      <p>
+        Photographer • Video Editor
+      </p>
+
+      <a href="#portfolio" class="btn">
+        Lihat Portofolio
+      </a>
+
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
+
+  <section id="about">
+
+    <div class="container">
+
+      <h2 class="section-title">
+        Tentang <span>Saya</span>
+      </h2>
+
+      <div class="about">
+        <p>
+          Saya Naufal Rizki Prasetyo lulusan dari SMK NEGERI 10 MALANG tahun 2026 jurusan DESAIN KOMUNIKASI VISUAL.
+          Saya memiliki pengalaman prakerin di industri foto video wedding prewedding selama 8 bulan.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <section id="skills">
+
+    <div class="skills-grid">
+
+      <div class="skill-card">
+        <div class="skill-icon">📸</div>
+        <h3>Photography</h3>
+        <p>Event, Wedding Pre-Wedding dan Commercial Photography.</p>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">🎬</div>
+        <h3>Video Editing</h3>
+        <p>Cinematic Video, Reels, Short Content dan Company Profile.</p>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">
+          <img src="lightroom-png.png" alt="Adobe Lightroom" style="width:60px;">
+        </div>
+        <h3>Adobe Lightroom</h3>
+        <p>Mengolah foto dengan color grading profesional, retouching, dan koreksi warna foto.</p>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">
+          <img src="premiere-pro-png.png" alt="Adobe Premiere Pro" style="width:60px;">
+        </div>
+        <h3>Adobe Premiere Pro</h3>
+        <p>Mengedit video cinematic, wedding, reels, short content, serta pembuatan company profile.</p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PORTFOLIO -->
+  <div class="lightbox" id="lightbox">
+    <img id="lightbox-img" src="" alt="">
+  </div>
+  <section id="portfolio">
+
+    <div class="container">
+
+      <h2 class="section-title">
+        My <span>Portfolio</span>
+      </h2>
+
+      <div class="portfolio-grid">
+
+        <!-- Ganti gambar sesuai file Anda -->
+
+        <div class="portfolio-item">
+          <img src="3.jpeg" alt="Project 1">
+          <div class="portfolio-content">
+            <h3>Whare's My Home - Film Project</h3>
+            <p>Sebuah project film yang dimana saya ikut serta menjadi 2nd editor.</p>
+          </div>
+        </div>
+
+        <div class="portfolio-item">
+          <img src="4.jpeg" alt="Project 2">
+          <div class="portfolio-content">
+            <h3>Berubah - Film Project</h3>
+            <p>Sebuah project film yang dimana saya ikut serta menjadi 2nd editor.</p>
+          </div>
+        </div>
+
+        <div class="portfolio-item">
+          <img src="5.jpeg" alt="Project 3">
+          <div class="portfolio-content">
+            <h3>Kita Dan harmoni </h3>
+            <p>Sebuah project video yang dimana sebagai konten media sosial dan media promosi online.</p>
+          </div>
+        </div>
+        <div class="portfolio-item">
+          <img src="6.jpeg" alt="Project 4">
+          <div class="portfolio-content">
+            <h3>Renjana Kelana</h3>
+            <p>Sebuah project video yang dimana sebagai konten media sosial dan media promosi online.</p>
+          </div>
+        </div>
+
+        <div class="portfolio-item">
+          <img src="7.jpeg" alt="Project 5">
+          <div class="portfolio-content">
+            <h3>Wong Kono Wong Kene</h3>
+            <p>Sebuah project sketsa pendek yang dimana sebagai tugas video dan media pembelajaran di videografi.</p>
+          </div>
+        </div>
+
+        <div class="portfolio-item">
+          <img src="8.jpeg" alt="Project 6">
+          <div class="portfolio-content">
+            <h3>Direct Photography</h3>
+            <p>Project foto yang saya ambil saat pembuatan video KITA DAN HARMONI sebagai konten media sosial dan
+              promosi online.</p>
+          </div>
+        </div>
+
+        <div class="portfolio-item">
+          <img src="9.jpeg" alt="Project 7">
+          <div class="portfolio-content">
+            <h3>Direct Photography</h3>
+            <p>Project foto yang saya ambil saat pembuatan video RENJANA KELANA sebagai konten media sosial dan promosi
+              online.</p>
+          </div>
+        </div>
+
+        <div class="portfolio-item">
+          <img src="10.jpeg" alt="Project 8">
+          <div class="portfolio-content">
+            <h3>Wedding Photography</h3>
+            <p>Foto yang saya ambil untuk menciptakan momen bahagia saat pernikahan.</p>
+          </div>
+        </div>
+
+        <div class="portfolio-item">
+          <img src="11.jpeg" alt="Project 9">
+          <div class="portfolio-content">
+            <h3>Sport Photography</h3>
+            <p>Foto yang saya ambil saat kegiatan berolah raga untuk menciptakan momen yang ciamik.</p>
+          </div>
+        </div>
+
+        <div class="portfolio-item">
+          <img src="12.jpeg" alt="Project 10">
+          <div class="portfolio-content">
+            <h3>Sport Photography</h3>
+            <p>Foto yang saya ambil saat kegiatan berolah raga untuk menciptakan momen yang ciamik.</p>
+          </div>
+        </div>
+
+        <div class="portfolio-item">
+          <img src="13.jpeg" alt="Project 11">
+          <div class="portfolio-content">
+            <h3>Documentation</h3>
+            <p>Foto yang saya ambil saat kegiatan berlangsung untuk memenuhi kebutuhan dokumentasi.</p>
+          </div>
+        </div>
+
+        <div class="portfolio-item">
+          <img src="14.jpeg" alt="Project 12">
+          <div class="portfolio-content">
+            <h3>Documentation</h3>
+            <p>Foto yang saya ambil saat kegiatan berlangsung untuk memenuhi kebutuhan dokumentasi.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CONTACT -->
+
+  <section id="kontak">
+
+    <div class="container contact">
+
+      <h2 class="section-title">
+        Hubungi <span>Saya</span>
+      </h2>
+
+      <div class="contact-list">
+
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fa-solid fa-envelope"></i>
+          </div>
+
+          <div class="contact-text">
+            <h3>Email</h3>
+            <p>naufalprass88@email.com</p>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fa-brands fa-instagram"></i>
+          </div>
+
+          <div class="contact-text">
+            <h3>Instagram</h3>
+            <p>@masprass.Photovisual</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+    <h3>Naufal Prass</h3>
+    <p>Photographer & Video Editor</p>
+
+    <div class="footer-social">
+      <a href="#"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#"><i class="fa-solid fa-envelope"></i></a>
+    </div>
+
+    <p>© 2026 All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+  </script>
+
+  <script>
+    const portfolioImages = document.querySelectorAll('.portfolio-item img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    portfolioImages.forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightbox.classList.add('active');
+      });
+    });
+
+    lightbox.addEventListener('click', () => {
+      lightbox.classList.remove('active');
+    });
+  </script>
+</body>
+
+</html>
